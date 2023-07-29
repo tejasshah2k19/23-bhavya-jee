@@ -1,0 +1,57 @@
+webapp 
+
+webapp => http ->
+
+
+client -> user -> browser  -> facebook.com -> sending request 
+
+server -> deploy --> accept -> process -> response 
+
+
+
+signup->facebook -> 
+	firstName
+	email
+	password 
+			submit
+		
+	request -> server -> data request -> server 
+		-> read -> validate ->  true | false -> response 
+		
+		
+client -> send request -->
+server -> accept request -> process -> response 
+
+
+client -> request 
+server -> response 
+
+
+back-end developer -> 
+front-end developer -> 
+full-stack developer-> 
+--------------------------------------------------
+
+servlet -> backend server -> read client -> response 
+
+class A extends Thread 
+	public void run()
+
+1) class SignupServlet extends HttpServlet 
+2) logic -> service() 
+3) mapping -> form -> servlet ?  @WebServlet
+
+MVC-->  
+? where to create a servlet file ? 
+controller 
+
+
+
+
+
+
+
+		
+		
+		
+		
