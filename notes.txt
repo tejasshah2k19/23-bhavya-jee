@@ -45,7 +45,22 @@ MVC-->
 ? where to create a servlet file ? 
 controller 
 
+---------------------------------------------
+project->server -> web.xml -> configuration
 
+WEB-INF -> 
+
+firstname
+email
+password
+gender - radio 
+hobby - checkbox 
+city - drop down 
+
+-> next page -> print if success 
+		       error if input missing 
+		       
+-------------------------------------------------------------		       
 
 
 
