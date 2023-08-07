@@ -1,12 +1,16 @@
 package com.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.util.DbConnection;
 
 @WebServlet("/SignupController")
 public class SignupController extends HttpServlet{
@@ -38,23 +42,34 @@ public class SignupController extends HttpServlet{
 			error = error + "<br>Please Enter Password";
 		}
 		
-		PrintWriter out = response.getWriter(); //out -> data -> browser  
-		response.setContentType("text/html");//MIME  
-		
-		out.print("<html><body>");
-		if(isError == true) {
+		 
+	 	if(isError == true) {
 			//error 
-			out.print(error);
-		}else {
+	  	}else {
 			//success
-			out.print("FirstName : "+firstName);
-			out.print("<br>Email : "+email);
-			out.print("<br>Password : "+password);
+		 
+			//db save 
+	  		try {
+	  			Connection connection = DbConnection.getConnection(); 
+	  			//execute query in db 
+	  			PreparedStatement pstmt = connection.prepareStatement("insert into users (firstName,email,password) values (?,?,?)");
+	  			pstmt.setString(1, firstName);
+	  			pstmt.setString(2, email);
+	  			pstmt.setString(3, password);
+	  			
+	  			pstmt.executeUpdate(); //query run 
+	  			
+	  			RequestDispatcher rd = request.getRequestDispatcher("Login.jsp");
+	  			rd.forward(request, response);
+	  			
+	  		}catch(Exception e) {
+	  			e.printStackTrace();
+	  		}
+			//login 
 			
 		}
 		
-		out.print("</body></html>");
-		
+		 
 		 
 		
 	}
