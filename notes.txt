@@ -62,7 +62,109 @@ city - drop down
 		       
 -------------------------------------------------------------		       
 
+jsp -> java server page | java servlet page
 
+
+jsp -> java + html**
+
+1) scriptlet -> is used to write java logic 
+	<%   %> 
+2) expression -> is used to print java stuff
+	<%!   %>  
+3) declaration -> declare at instance level 
+
+ -------------------------------------------------------------
+ mysql client -> root 
+ 
+ mysql> 
+root username
+root password  
+ 
+ create database royal; 
+
+ 
+ create database jeebhavya;  
+ 
+ 
+ use jeebhavya; 
+ 
+ 
+ create table users (
+ 	userId integer primary key auto_increment,
+ 	firstName varchar(30), 
+ 	email  varchar(30),
+ 	password varchar(30)
+ );
+ 
+ show tables; 
+ 
+ insert into users (firstName,email,password) values ('ram','ram@gmail.com','ram'); 
+ 
+ select * from users; 
+ 
+ 
+database  
+ C-create  : insert  
+ R-read    : select 
+ U-update  : update 
+ D-delete  : delete 
+ 
+ 
+ 
+ java -> connected -> mysql db ->
+ 
+ 
+ 
+ https://dev.mysql.com/downloads/connector/j/
+ 
+ select platform independant 
+ 
+ select download option having zip file 
+ 
+ 
+ project -> right click -> properties -> java build path -> libraries -> add jar -> 
+ select mysql jar from your project/web-inf/lib -> then click on order and export tab ->
+ click on select all button -> apply and close 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 
 
 
