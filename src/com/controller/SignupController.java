@@ -1,22 +1,22 @@
 package com.controller;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.util.DbConnection;
+import com.bean.UserBean;
+import com.dao.UserDao;
 
 @WebServlet("/SignupController")
 public class SignupController extends HttpServlet{
 
 	
-	public void service(HttpServletRequest request,HttpServletResponse response) throws IOException{
+	public void service(HttpServletRequest request,HttpServletResponse response) throws IOException, ServletException{
 		System.out.println("SignupController...");
 		
 		//read 
@@ -49,22 +49,18 @@ public class SignupController extends HttpServlet{
 			//success
 		 
 			//db save 
-	  		try {
-	  			Connection connection = DbConnection.getConnection(); 
-	  			//execute query in db 
-	  			PreparedStatement pstmt = connection.prepareStatement("insert into users (firstName,email,password) values (?,?,?)");
-	  			pstmt.setString(1, firstName);
-	  			pstmt.setString(2, email);
-	  			pstmt.setString(3, password);
-	  			
-	  			pstmt.executeUpdate(); //query run 
-	  			
-	  			RequestDispatcher rd = request.getRequestDispatcher("Login.jsp");
-	  			rd.forward(request, response);
-	  			
-	  		}catch(Exception e) {
-	  			e.printStackTrace();
-	  		}
+	  		UserDao userDao = new UserDao();
+	  		
+	  		UserBean user = new UserBean(); 
+	  		user.setFirstName(firstName);
+	  		user.setEmail(email);
+	  		user.setPassword(password);
+	  		 
+	  		userDao.addUser(user);
+	  		
+			RequestDispatcher rd = request.getRequestDispatcher("Login.jsp");
+			rd.forward(request, response);
+
 			//login 
 			
 		}
